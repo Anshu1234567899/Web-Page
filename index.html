@@ -53,7 +53,6 @@
   nav ul { display: flex; gap: 32px; list-style: none; font-size: 0.92rem; font-weight: 500; }
   nav ul li a:hover { color: var(--clay); }
 
-  /* HERO */
   .hero {
     padding: 90px 0 70px;
     border-bottom: 1px solid var(--line);
@@ -198,10 +197,23 @@
   border: 1px solid var(--line);
   flex-shrink: 0;
 }
-
-
+  
 @media (max-width: 768px) {
-  nav ul { display: none; }
+  .nav-toggle { display: block; }
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    flex-direction: column;
+    gap: 0;
+    border-bottom: 1px solid var(--line);
+    z-index: 100;
+  }
+  nav ul.open { display: flex; }
+  nav ul li a { display: block; padding: 14px 24px; border-bottom: 1px solid var(--line); }
   .hero-grid { grid-template-columns: 1fr; }
   .hero-img { order: -1; aspect-ratio: 16/10; }
   .about-intro { flex-direction: column; }
@@ -281,8 +293,6 @@
     border-radius: 6px;
     border: 1px solid #56705A;
   }
-
-  /* CTA */
   .cta {
     padding: 90px 0;
     text-align: center;
@@ -295,8 +305,7 @@
   }
 
   .cta p { color: #56524A; margin-bottom: 32px; }
-
-  /* FOOTER */
+  
   footer {
     border-top: 1px solid var(--line);
     padding: 30px 0;
@@ -321,15 +330,16 @@
 <body>
 
   <div class="wrap">
-    <nav>
-<img src="https://inamigosfoundation.org.in/public/storage/settings/174421468011.jpg" alt="InAmigos Foundation" class="logo">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#impact">Impact</a></li>
-        <li><a href="#join">Join Us</a></li>
-      </ul>
-    </nav>
+  <nav>
+  <img src="https://inamigosfoundation.org.in/public/storage/settings/174421468011.jpg" alt="InAmigos Foundation" class="logo">
+  <button class="nav-toggle" onclick="document.querySelector('nav ul').classList.toggle('open')">☰</button>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#join">Join Us</a></li>
+  </ul>
+</nav>
   </div>
 
   <header class="hero">
